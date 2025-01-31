@@ -73,18 +73,18 @@
 
    function download() {
       let a = document.createElement('a');
-      // Thay đổi tải về âm thanh thành FLAC
+      // Change audio download to FLAC
       a.href = window.URL.createObjectURL(new Blob(window.audio, { type: 'audio/flac' }));
       a.download = 'audio_' + document.title + '.flac';  // Đặt tên file là .flac
       a.click();
 
-      // Video tải xuống với định dạng mp4, chỉ khi video đã được tải hoàn thành
+      // Download video in mp4 format, only when video has finished downloading
       if (window.isComplete === 1) {
          a.href = window.URL.createObjectURL(new Blob(window.video));
-         a.download = 'video_' + document.title + '.mp4';  // Tên file video
+         a.download = 'video_' + document.title + '.mp4';  // Video file name
          a.click();
-         window.downloadAll = 0; // Đặt lại trạng thái tải về
-         window.isComplete = 0;  // Đặt lại trạng thái video đã hoàn thành
+         window.downloadAll = 0; // Reset download status
+         window.isComplete = 0;  // Reset completed video status
       }
    }
 
